@@ -5,7 +5,7 @@ const nextConfig = {
   },
   images: { unoptimized: true },
   experimental: {
-    serverActions: true, // Enable Server Actions
+    serverActions: {}, // Changed from `true` to an empty object
   },
 };
 
