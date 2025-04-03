@@ -1,6 +1,10 @@
 export const generateGameCode = async (prompt: string): Promise<string> => {
+  const prod1 = "https://code-to-play-api.vercel.app/generate-game";
+  const prod2 = "https://codetoplay-groq-api.vercel.app/generate-game";
+  const groq = "http://localhost:3001/generate-game";
+  const gem2 = "http://localhost:5000/generate-game";
   try {
-    const response = await fetch("https://code-to-play-api.vercel.app/generate-game", {
+    const response = await fetch(gem2, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -9,7 +13,7 @@ export const generateGameCode = async (prompt: string): Promise<string> => {
     });
 
     const data = await response.json();
-    
+
     if (data.gameCode) {
       return data.gameCode.replace(/```javascript|```/g, "").trim(); // Clean up code formatting
     } else {
