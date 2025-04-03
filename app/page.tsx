@@ -10,8 +10,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { generateGameCode } from "./actions";
 
-const CodeEditor = dynamic(() => import("@/components/code-editor"), { ssr: false });
-const GamePreview = dynamic(() => import("@/components/game-preview"), { ssr: false });
+const CodeEditor = dynamic(() => import("@/components/code-editor"), {
+  ssr: false,
+});
+const GamePreview = dynamic(() => import("@/components/game-preview"), {
+  ssr: false,
+});
 
 export default function Home() {
   const [prompt, setPrompt] = useState("");
@@ -41,7 +45,8 @@ export default function Home() {
       console.error("Failed to generate game:", error);
       toast({
         title: "Error",
-        description: error instanceof Error ? error.message : "Failed to generate game",
+        description:
+          error instanceof Error ? error.message : "Failed to generate game",
         variant: "destructive",
       });
     } finally {
@@ -63,7 +68,7 @@ export default function Home() {
     <main className="min-h-screen bg-background p-8">
       <div className="max-w-6xl mx-auto space-y-8">
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold tracking-tight">AI Game Generator</h1>
+          <h1 className="text-4xl font-bold tracking-tight">Code To Play</h1>
           <p className="text-muted-foreground">
             Transform your ideas into playable 2D games using AI
           </p>
@@ -77,7 +82,10 @@ export default function Home() {
               onChange={(e) => setPrompt(e.target.value)}
               className="flex-1"
             />
-            <Button onClick={handleGenerate} disabled={isGenerating || !prompt.trim()}>
+            <Button
+              onClick={handleGenerate}
+              disabled={isGenerating || !prompt.trim()}
+            >
               <Wand2 className="mr-2 h-4 w-4" />
               {isGenerating ? "Generating..." : "Generate Game"}
             </Button>
@@ -104,7 +112,11 @@ export default function Home() {
         </Tabs>
 
         <div className="flex justify-end">
-          <Button onClick={handleDownload} disabled={!gameCode} variant="outline">
+          <Button
+            onClick={handleDownload}
+            disabled={!gameCode}
+            variant="outline"
+          >
             Download Game
           </Button>
         </div>
