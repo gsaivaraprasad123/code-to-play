@@ -72,7 +72,7 @@ export default function Home() {
     document.body.removeChild(element);
   };
 
-  const handlePreloadedTheme = (theme: string) => {
+  const handlePreloadedTheme = (theme: keyof typeof preloadedGames) => {
     const code = preloadedGames[theme];
     setGameCode(code);
     setEditedCode(code);
@@ -112,7 +112,7 @@ export default function Home() {
           <div className="space-y-2">
             <p className="font-semibold">Or Recents:</p>
             <div className="flex gap-4 flex-wrap">
-              {Object.keys(preloadedGames).map((theme) => (
+              {(Object.keys(preloadedGames) as (keyof typeof preloadedGames)[]).map((theme) => (
                 <Button
                   key={theme}
                   variant="secondary"
