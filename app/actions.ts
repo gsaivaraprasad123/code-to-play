@@ -4,7 +4,7 @@ export const generateGameCode = async (prompt: string): Promise<string> => {
   const groq = "http://localhost:3001/generate-game";
   const gem2 = "http://localhost:5000/generate-game";
   try {
-    const response = await fetch(gem2, {
+    const response = await fetch(prod1, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
