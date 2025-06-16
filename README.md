@@ -1,97 +1,72 @@
-🎮 Code To Play – AI Game Generator
-Live Demo: code-to-play.vercel.app
+# 🎮 Code To Play — AI Game Generator
 
-An AI-powered game generator that transforms plain text ideas into playable browser-based games in seconds. Built to accelerate game prototyping and inspire creativity for developers, students, and designers.
+**Code To Play** is an AI-powered web application that allows users to describe a game in natural language and instantly generate a playable game prototype. Powered by the Gemini API and built with React, TypeScript, and Phaser, it bridges the gap between imagination and interaction in real-time.
 
-✨ Features
-🧠 AI-Powered Generation: Uses Google Gemini to convert user prompts into complete game logic.
+🌐 **Live Demo**: [code-to-play.vercel.app](https://code-to-play.vercel.app)
 
-⚡ Real-time Game Preview: Instantly play and test generated games in-browser using Phaser.
+---
 
-💡 Prompt-to-Play: Just describe your idea (e.g., "a Flappy Bird clone with dragons") and get a functional game.
 
-💾 Editable Code Preview: Shows editable game config/code generated from your input.
+> “🎲 Speak it. See it. Play it. — Instantly turn your game ideas into reality.”
 
-🛠️ Developer-Ready Stack: Built using scalable, modern frameworks.
+---
 
-🛠️ Tech Stack
-Frontend: React + Next.js + TailwindCSS
+## ✨ Features
 
-Game Engine: Phaser.js
+- 🎙️ **Natural Language to Game**: Converts plain English game descriptions into code using Gemini API.
+- 🧠 **AI-Powered Generation**: Uses large language models to generate complete Phaser game logic.
+- 🔁 **Regenerate & Tweak**: Modify or regenerate games live with updated prompts.
+- 🎮 **Playable Previews**: Instantly test generated games in an embedded canvas.
+- 💡 **Use Cases**: Perfect for game ideation, prototyping, learning, and fun exploration.
 
-Backend: Node.js + Express
+---
 
-AI Integration: Google Gemini API (Generative AI)
+## 🛠️ Tech Stack
 
-Communication: Axios, REST APIs
+- **Frontend**: React, Next.js, TailwindCSS, TypeScript  
+- **Backend**: Node.js, Express, Gemini API (Google Generative AI)  
+- **Game Engine**: Phaser  
+- **Deployment**: Vercel  
 
-Deployment: Vercel (Frontend) & Render/Fly.io/Custom (Backend)
+---
 
-📦 Project Structure
-bash
-Copy
-Edit
-.
-├── frontend/               # React + Next.js client
-│   ├── pages/
-│   ├── components/
-│   └── styles/
-├── backend/                # Express.js server
-│   └── routes/
-│   └── services/           # Gemini integration logic
-├── public/
-└── README.md
-🚀 Getting Started
-1. Clone the repository
-bash
-Copy
-Edit
-git clone https://github.com/your-username/code-to-play.git
+## 📚 How It Works
+
+1. The user enters a game idea (e.g., “a platformer where the player avoids fireballs”).
+2. The prompt is sent to Gemini API to generate game logic and code.
+3. The code is interpreted inside a Phaser sandbox.
+4. The game is rendered instantly in the browser.
+
+---
+
+## 🏆 Highlights
+
+- Built in under 24 hours during a rapid development sprint.
+- Designed to be educational, creative, and playful.
+- Enables **non-coders** and **developers** alike to bring ideas to life effortlessly.
+
+---
+
+## 📦 Setup Locally
+
+```bash
+git clone https://github.com/yourusername/code-to-play.git
 cd code-to-play
-2. Setup Environment
-Create a .env file in backend/:
-
-ini
-Copy
-Edit
-GEMINI_API_KEY=your_gemini_api_key
-3. Install Dependencies
-bash
-Copy
-Edit
-# Frontend
-cd frontend
 npm install
-
-# Backend
-cd ../backend
-npm install
-4. Run the App
-bash
-Copy
-Edit
-# Start Backend
-cd backend
 npm run dev
 
-# Start Frontend
-cd ../frontend
-npm run dev
-Visit http://localhost:3000
+```
+---
 
-📌 Use Cases
-🧒 Students: Learn programming through gamified prompts.
+## 🤖 Powered By
 
-🎨 Designers: Prototype game logic before full implementation.
+- Gemini API.
+  
+- Phaser Game Engine.
+  
+- Next.js.
 
-👨‍💻 Developers: Kickstart indie game ideas and MVPs.
+---
 
-🎮 Educators: Make coding engaging through interactive learning.
-
-🏆 Achievements
-🥉 Top-3 Finalist in National Hackathon 2025
-
-🚀 Recognized for innovation in generative AI + game dev
-
-🤝 Contributing
-Have an idea or feature request? PRs and issues welcome!
+## 💬 Feedback
+Have ideas or feedback? Feel free to open issues or submit PRs!
