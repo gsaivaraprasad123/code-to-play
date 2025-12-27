@@ -1,5 +1,5 @@
 export const generateGameCode = async (prompt: string): Promise<string> => {
-  const prod1 = "https://code-to-play-api.vercel.app/generate-game";
+  const prod1 = "https://codetoplay-node-api.onrender.com/generate-game";
   const prod2 = "https://codetoplay-groq-api.vercel.app/generate-game";
   const groq = "http://localhost:3001/generate-game";
   const gem2 = "http://localhost:5000/generate-game";
