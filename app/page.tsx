@@ -1,3 +1,4 @@
+// app/page.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -9,6 +10,7 @@ import dynamic from "next/dynamic";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { generateGameCode } from "./actions";
+import { preloadedGames } from "@/lib/preload"; // <-- Import themes
 
 const CodeEditor = dynamic(() => import("@/components/code-editor"), {
   ssr: false,
@@ -20,12 +22,12 @@ const GamePreview = dynamic(() => import("@/components/game-preview"), {
 export default function Home() {
   const [prompt, setPrompt] = useState("");
   const [gameCode, setGameCode] = useState("");
-  const [editedCode, setEditedCode] = useState(""); // Track real-time changes
+  const [editedCode, setEditedCode] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
-    setEditedCode(gameCode); // Sync editor with generated game
+    setEditedCode(gameCode);
   }, [gameCode]);
 
   const handleGenerate = async () => {
@@ -42,7 +44,7 @@ export default function Home() {
     try {
       const code = await generateGameCode(prompt);
       setGameCode(code);
-      setEditedCode(code); // Update editor and preview
+      setEditedCode(code);
       toast({
         title: "Game Generated!",
         description: "Your game has been created successfully.",
@@ -70,17 +72,27 @@ export default function Home() {
     document.body.removeChild(element);
   };
 
+  const handlePreloadedTheme = (theme: keyof typeof preloadedGames) => {
+    const code = preloadedGames[theme];
+    setGameCode(code);
+    setEditedCode(code);
+    toast({
+      title: ` Game Generated`,
+      description: "You can now preview or edit the game.",
+    });
+  };
+
   return (
     <main className="min-h-screen bg-background p-8">
       <div className="max-w-6xl mx-auto space-y-8">
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold tracking-tight">Code To Play</h1>
           <p className="text-muted-foreground">
-            Transform your ideas into playable 2D games using AI
+            Transform your ideas into playable 2D games using AI or themes
           </p>
         </div>
 
-        <Card className="p-6">
+        <Card className="p-6 space-y-4">
           <div className="flex gap-4">
             <Input
               placeholder="Describe your game idea... (e.g., 'Make a flappy bird game')"
@@ -95,6 +107,21 @@ export default function Home() {
               <Wand2 className="mr-2 h-4 w-4" />
               {isGenerating ? "Generating..." : "Generate Game"}
             </Button>
+          </div>
+
+          <div className="space-y-2">
+            <p className="font-semibold">Or Recents:</p>
+            <div className="flex gap-4 flex-wrap">
+              {(Object.keys(preloadedGames) as (keyof typeof preloadedGames)[]).map((theme) => (
+                <Button
+                  key={theme}
+                  variant="secondary"
+                  onClick={() => handlePreloadedTheme(theme)}
+                >
+                  {theme}
+                </Button>
+              ))}
+            </div>
           </div>
         </Card>
 
